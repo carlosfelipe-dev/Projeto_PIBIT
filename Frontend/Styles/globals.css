@@ -1,0 +1,34 @@
+/* Frontend/Styles/globals.css */
+
+/*arquivo pra chamar as variaveis criadas no globals.css*/
+
+:root {
+    /* Paleta de Cores (Exemplo para um software psicossocial: tons calmos) */
+    --primary-color: #2D5A27;    /* Verde escuro profissional */
+    --secondary-color: #E8F5E9;  /* Verde bem clarinho para fundos */
+    --accent-color: #4CAF50;     /* Verde para botões de ação */
+    --error-color: #D32F2F;      /* Vermelho para erros */
+    --text-color: #333333;
+    --white: #FFFFFF;
+
+    /* Tipografia */
+    --font-main: 'Inter', sans-serif;
+    --font-size-base: 16px;
+
+    /* Espaçamentos e Bordas */
+    --border-radius: 8px;
+    --container-padding: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+}

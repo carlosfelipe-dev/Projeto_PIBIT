@@ -1,0 +1,24 @@
+Questionário (lógica condicional)
+Interface guiada → uma pergunta por vez
+    Fluxo:
+        Início do Questionário
+                ↓
+        Questões Básicas (triagem)
+                ↓
+        Resposta indica risco?
+            ↙           ↘
+        Sim             Não
+        ↓               ↓
+        Questões           Fluxo curto
+        específicas        (poucas perguntas)
+        ↓
+        Aprofundamento
+        ↓
+        Finalização
+
+     ↓
+Resultado Individual
+     ↓
+Gráficos (gestores / RH)
+     ↓
+Avaliação & Relatórios

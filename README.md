@@ -1,4 +1,4 @@
-Tela de login
+Tela de login (talvez)
 
      ↓   
 Página Inicial
@@ -41,5 +41,8 @@ Django Crispy Forms
 HTMX
 Alpine.js (opcional)
 Plotly
+html 
+CSS
+Javascript
 
  
