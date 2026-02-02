@@ -8,7 +8,7 @@ O sistema foi projetado para coletar dados de forma guiada, analisar respostas i
 
 ##  Objetivo do Projeto
 
-- Aplicar questionários com **lógica condicional** baseado em instrumentos validadeos como o Copenhagen Psychosocial Questionnaire (COPSOQ) e o Job Content Questionnaire (JCQ)
+- Aplicar questionários com **lógica condicional** baseado em instrumentos validados como o Copenhagen Psychosocial Questionnaire (COPSOQ) e o Job Content Questionnaire (JCQ)
 - Identificar **níveis de risco individuais**
 - Gerar **indicadores agregados** para tomada de decisão
 - Fornecer **relatórios analíticos** para gestores e pesquisadores
