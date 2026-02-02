@@ -10,16 +10,14 @@ HTML5
 
 CSS3
 
-JavaScript
+TypeScript
 
-Bootstrap – Layout responsivo
+Bootstrap – Layout responsivo (Futuramente / opicional)
 
 Django Crispy Forms – Estilização e organização de formulários
 
-HTMX – Atualizações dinâmicas sem recarregar a página
-
 Alpine.js (opcional) – Interatividade leve no frontend
 
-Visualização de Dados
+Visualização de Dados:
 
 Plotly – Gráficos interativos e dashboards
