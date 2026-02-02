@@ -1,4 +1,4 @@
-Questionário (lógica condicional)
+Questionário (lógica condicional) - AINDA EM PROCESSO (Nada confirmado)
 Interface guiada → uma pergunta por vez
     Fluxo:
         Início do Questionário
