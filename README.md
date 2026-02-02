@@ -1,4 +1,4 @@
-# Sistema de Avaliação de Riscos e Indicadores (Django)
+# Sistema de Avaliação de Riscos e Indicadores
 
 Este projeto consiste em um **sistema web de questionários inteligentes com lógica condicional**, voltado para a **avaliação de riscos, geração de indicadores e relatórios**, atendendo diferentes perfis de usuários: **operários, gestores, pesquisadores e administradores**.
 
