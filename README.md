@@ -1,48 +1,61 @@
-Tela de login (talvez)
+# Sistema de Avaliação de Riscos e Indicadores (Django)
 
-     ↓   
-Página Inicial
-- 4 páginas por perfil: 
-(1) operários - Questionário + resultado simples ; 
-(2) Gestor - Indicadores agregados + relatórios ; 
-(3) Pesquisador - Indicadores agregados + relatórios ; 
-(4) Admin - Gestão do sistema
-     ↓
-Questionário (lógica condicional)
-Interface guiada → uma pergunta por vez
-    Fluxo:
-        Início do Questionário
-                ↓
-        Questões Básicas (triagem)
-                ↓
-        Resposta indica risco?
-            ↙           ↘
-        Sim             Não
-        ↓               ↓
-        Questões           Fluxo curto
-        específicas        (poucas perguntas)
-        ↓
-        Aprofundamento
-        ↓
-        Finalização
+Este projeto consiste em um **sistema web de questionários inteligentes com lógica condicional**, voltado para a **avaliação de riscos, geração de indicadores e relatórios**, atendendo diferentes perfis de usuários: **operários, gestores, pesquisadores e administradores**.
 
-     ↓
+O sistema foi projetado para coletar dados de forma guiada, analisar respostas individualmente e apresentar resultados agregados por meio de gráficos e relatórios estratégicos.
+
+---
+
+##  Objetivo do Projeto
+
+- Aplicar questionários com **lógica condicional** baseado em instrumentos validadeos como o Copenhagen Psychosocial Questionnaire (COPSOQ) e o Job Content Questionnaire (JCQ)
+- Identificar **níveis de risco individuais**
+- Gerar **indicadores agregados** para tomada de decisão
+- Fornecer **relatórios analíticos** para gestores e pesquisadores
+- Centralizar a **gestão do sistema** em um painel administrativo
+
+---
+
+## 🧩 Perfis de Usuário
+
+O sistema é dividido em **quatro perfis**, cada um com funcionalidades específicas:
+
+###  Operário
+- Responde ao questionário
+- Visualiza **resultado individual simples**
+- Interface direta e objetiva
+
+###  Gestor
+- Visualiza **indicadores agregados**
+- Acesso a **gráficos e relatórios**
+- Foco em análise gerencial e tomada de decisão
+
+###  Pesquisador
+- Acesso a **dados agregados e relatórios**
+- Visualização analítica dos resultados
+- Foco em estudos e análises estatísticas
+
+###  Administrador
+- Gestão de usuários
+- Configuração do sistema
+- Gerenciamento de questionários e regras de lógica
+
+---
+
+##  Fluxo Geral do Sistema
+
+```text
+Tela de Login (opcional)
+        ↓
+Página Inicial (Dashboard por Perfil)
+        ↓
+Questionário Inteligente
+        ↓
 Resultado Individual
-     ↓
-Gráficos (gestores / RH)
-     ↓
-Avaliação & Relatórios
+        ↓
+Gráficos e Indicadores
+        ↓
+Avaliação e Relatórios
 
- --------------------------------------------------------------------
-Ferramentas:
-Django
-Bootstrap
-Django Crispy Forms
-HTMX
-Alpine.js (opcional)
-Plotly
-html 
-CSS
-Javascript
 
  
