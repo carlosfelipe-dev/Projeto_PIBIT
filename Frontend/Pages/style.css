@@ -10,6 +10,29 @@ body {
     top: 80%;
 }
 
+.titulo-programa{
+    color: white;
+}
+.conteudo-banner{
+    bottom: auto;
+    left: 0;
+    position: absolute;
+    right: auto;
+    text-align: left;
+    top: 100px;
+    margin: 50px;
+}
+.descricao-programa{
+    padding-right: 50%;
+    text-align: justify;
+    color: white;
+}
+.botoes{
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    bottom: auto;
+}
 .landing-page.imagem-carrocel {
     height: 100%;
     inset: 0;
@@ -25,14 +48,9 @@ nav{
     color: #fff;
     padding: 10px;
     height: 100%;
-    display: flex;           /* Ativa o layout flexível (lado a lado) */
-    flex-direction: row;     /* Garante que fiquem em linha (padrão) */   /* Alinha os itens no centro verticalmente */
+    display: flex;
+    flex-direction: row;
     gap: 30px;
-    margin-top: 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 .item-menu {
