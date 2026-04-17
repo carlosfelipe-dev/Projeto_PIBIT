@@ -1,46 +1,16 @@
-# Riscos Psicossociais | Página inicial
+# React + Vite
 
-Página inicial responsiva sobre riscos psicossociais no ambiente de trabalho, com barra superior, menu, barra lateral recolhível, seção de destaques e rodapé com contatos.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+Currently, two official plugins are available:
 
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-# Estrutura de Arquivos Importante:
+## React Compiler
 
-- src/App.tsx: Onde as rotas estão configuradas. Se precisar criar uma nova página, ela deve ser declarada aqui.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- src/pages/: Contém as telas principais do sistema:
+## Expanding the ESLint configuration
 
-- Home.tsx: Painel principal de seleção.
-
-- CopsoqForms.tsx: Interface do questionário COPSOQ II.
-
-- NasaTlxForms.tsx: Interface da escala NASA TLX.
-
-- src/components/ui/: Biblioteca de componentes visuais (botões, cards, inputs) baseada em Shadcn UI. 
-
-- vite.config.ts: Configurações do servidor de desenvolvimento e apelidos de caminho (@/).
-
-# Como rodar o projeto:
-
-- Entre na pasta do frontend: cd frontend
-
-- Instale as dependências: npm install
-
-- Inicie o servidor: npm run dev
-
-- Acesse: http://localhost:5173
-
-Nota para integração: Procure pelos comentários // TODO nos arquivos das páginas para identificar onde conectaremos as respostas dos formulários com o nosso backend em Python.
-
-# GUIA
-
-Guia de Navegação (Pasta src)
-
-- Quer mudar o visual de um botão ou card -> Vá em components/ui/.
-
-- Quer editar as perguntas ou a lógica dos formulários -> Vá em pages/.
-
-- Quer criar uma nova rota ou página no menu -> Edite o App.tsx.
-
-- Quer alterar cores globais ou fontes -> Mexa no index.css dentro de assets/.
-    
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
