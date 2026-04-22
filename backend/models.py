@@ -1,16 +1,30 @@
-from database import db
+from sqlalchemy import Column, Integer, String, Float, JSON
+from database import Base
 
-class NasaTLX(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(100))
-    email = db.Column(db.String(100))
+class NasaTLX(Base):
+    __tablename__ = "nasa_tlx"
 
-    mental = db.Column(db.Float)
-    fisica = db.Column(db.Float)
-    temporal = db.Column(db.Float)
-    desempenho = db.Column(db.Float)
-    esforco = db.Column(db.Float)
-    frustracao = db.Column(db.Float)
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(100))
+    email = Column(String(100))
 
-    tlx_raw = db.Column(db.Float)
-    classificacao = db.Column(db.String(50))
+    mental = Column(Float)
+    fisica = Column(Float)
+    temporal = Column(Float)
+    desempenho = Column(Float)
+    esforco = Column(Float)
+    frustracao = Column(Float)
+
+    tlx_raw = Column(Float)
+    classificacao = Column(String(50))
+
+
+class Copsoq(Base):
+    __tablename__ = "copsoq"
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(100))
+    email = Column(String(100))
+
+    dados_demograficos = Column(JSON)
+    respostas = Column(JSON)

@@ -1,33 +1,50 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-from database import db
-from models import NasaTLX
+from fastapi import FastAPI, Depends
+from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+from database import engine, SessionLocal, Base
+from models import NasaTLX, Copsoq
 import pandas as pd
 
-app = Flask(__name__)
-CORS(app)
+app = FastAPI()
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///nasa.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# CORS (necessário pro React)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-db.init_app(app)
+Base.metadata.create_all(bind=engine)
 
-with app.app_context():
-    db.create_all()
+# =========================
+# DB SESSION
+# =========================
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
+
+# =========================
+# LÓGICA
+# =========================
 def Classificar(valor):
-    out = ""
     if valor < 30:
-        out = "Baixa carga"
+        return "Baixa carga"
     elif valor < 60:
-        out = "Carga moderada"
-    else:
-        out = "Alta carga"
-    return out
+        return "Carga moderada"
+    return "Alta carga"
 
-@app.route("/nasa", methods=["POST"])
-def receber_nasa():
-    data = request.json
+
+# =========================
+# NASA TLX
+# =========================
+@app.post("/nasa")
+def receber_nasa(data: dict, db: Session = Depends(get_db)):
 
     media = (
         data["mental"] +
@@ -53,38 +70,85 @@ def receber_nasa():
         classificacao=classificacao
     )
 
-    db.session.add(novo)
-    db.session.commit()
+    db.add(novo)
+    db.commit()
 
-    dados_execel()
+    dados_excel_nasa(db)
 
-    return jsonify({"tlx_raw": media, "classificacao": classificacao})
+    return {"tlx_raw": media, "classificacao": classificacao}
 
-def dados_execel():
-    with app.app_context():
-        registros = NasaTLX.query.all()
 
-        dados = []
+# =========================
+# COPSOQ
+# =========================
+@app.post("/copsoq")
+def receber_copsoq(data: dict, db: Session = Depends(get_db)):
 
-        for r in registros:
-            dados.append({
-                "ID": r.id,
-                "Nome": r.nome,
-                "Email": r.email,
-                "Mental": r.mental,
-                "Fisica": r.fisica,
-                "Temporal": r.temporal,
-                "Desempenho": r.desempenho,
-                "Esforco": r.esforco,
-                "Frustracao": r.frustracao,
-                "TLX_RAW": r.tlx_raw,
-                "Classificacao": r.classificacao
-            })
+    novo = Copsoq(
+        nome=data["nome"],
+        email=data["email"],
+        dados_demograficos=data.get("dados_demograficos", {}),
+        respostas=data.get("respostas", {})
+    )
 
-        df = pd.DataFrame(dados)
+    db.add(novo)
+    db.commit()
 
-        df.to_excel("nasa_dados.xlsx", index=False)
+    dados_excel_copsoq(db)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    return {"status": "ok"}
 
+
+# =========================
+# EXPORTAÇÃO NASA
+# =========================
+def dados_excel_nasa(db: Session):
+    registros = db.query(NasaTLX).all()
+
+    dados = []
+
+    for r in registros:
+        dados.append({
+            "ID": r.id,
+            "Nome": r.nome,
+            "Email": r.email,
+            "Mental": r.mental,
+            "Fisica": r.fisica,
+            "Temporal": r.temporal,
+            "Desempenho": r.desempenho,
+            "Esforco": r.esforco,
+            "Frustracao": r.frustracao,
+            "TLX_RAW": r.tlx_raw,
+            "Classificacao": r.classificacao
+        })
+
+    df = pd.DataFrame(dados)
+    df.to_excel("nasa_dados.xlsx", index=False)
+
+
+# =========================
+# EXPORTAÇÃO COPSOQ
+# =========================
+def dados_excel_copsoq(db: Session):
+    registros = db.query(Copsoq).all()
+
+    dados = []
+
+    for r in registros:
+        linha = {
+            "ID": r.id,
+            "Nome": r.nome,
+            "Email": r.email
+        }
+
+        if r.dados_demograficos:
+            linha.update(r.dados_demograficos)
+
+        if r.respostas:
+            for k, v in r.respostas.items():
+                linha[f"Q{k}"] = v
+
+        dados.append(linha)
+
+    df = pd.DataFrame(dados)
+    df.to_excel("copsoq_dados.xlsx", index=False)
